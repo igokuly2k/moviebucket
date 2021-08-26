@@ -27,7 +27,7 @@ public class Movie {
         this.director = director;
     }
 
-    public boolean validateYear(String year) {
+    public static boolean validateYear(String year) {
         int a;
         try {
             a = Integer.parseInt(year);

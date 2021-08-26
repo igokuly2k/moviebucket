@@ -15,6 +15,7 @@ public class App extends Application {
     private Parent root;
     private Scene scene;
     private Stage primaryStage;
+    private SQLiteDatabase db;
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage=primaryStage;
@@ -23,8 +24,11 @@ public class App extends Application {
         primaryStage.setScene(scene);
         primaryStage.setTitle("MovieBucket");
         primaryStage.show();
+        db=SQLiteDatabase.getInstance();
     }
-    
+    public SQLiteDatabase getDB(){
+        return db;
+    }
     public void changeScene(String sceneStr) {
                 loadScene(sceneStr);
                 primaryStage.setScene(scene);

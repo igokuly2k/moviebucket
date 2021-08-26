@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" spacing="10.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.igokuly2k.favouritemovies.AddMovieController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" spacing="10.0" xmlns="http://javafx.com/javafx/13" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.igokuly2k.favouritemovies.AddMovieController">
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
@@ -26,7 +26,7 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <TextField prefHeight="40.0" prefWidth="200.0" />
+            <TextField fx:id="movieNameField" prefHeight="40.0" prefWidth="200.0" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
@@ -36,7 +36,7 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <TextField prefHeight="40.0" prefWidth="200.0" />
+            <TextField fx:id="leadActorField" prefHeight="40.0" prefWidth="200.0" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
@@ -46,7 +46,7 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <TextField prefHeight="40.0" prefWidth="200.0" />
+            <TextField fx:id="leadActressField" prefHeight="40.0" prefWidth="200.0" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
@@ -56,7 +56,7 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <TextField prefHeight="40.0" prefWidth="200.0" />
+            <TextField fx:id="yearOfReleaseField" prefHeight="40.0" prefWidth="200.0" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
@@ -66,10 +66,10 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <TextField prefHeight="40.0" prefWidth="200.0" />
+            <TextField fx:id="directorField" prefHeight="40.0" prefWidth="200.0" />
          </children>
       </HBox>
-      <Button contentDisplay="CENTER" mnemonicParsing="false" text="Submit">
+      <Button contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#submit" text="Submit">
          <font>
             <Font size="18.0" />
          </font>

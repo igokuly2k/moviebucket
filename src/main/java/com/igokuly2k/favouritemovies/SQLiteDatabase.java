@@ -24,17 +24,17 @@ public class SQLiteDatabase {
 
     private SQLiteDatabase() {
         try {
-            String sql = "CREATE TABLE MOVIES IF NOT EXISTS "
+            String sql = "CREATE TABLE IF NOT EXISTS MOVIES "
                     + "(MOVIENAME TEXT,"
                     + "LEADACTOR TEXT,"
                     + "LEADACTRESS TEXT,"
                     + "YEAROFRELEASE TEXT,"
                     + "DIRECTOR TEXT)";
-            c = DriverManager.getConnection("movies.db");
+            c = DriverManager.getConnection("jdbc:sqlite:movies.db");
             Statement stmt = c.createStatement();
-            stmt.executeUpdate(sql);
+            stmt.execute(sql);
         } catch (SQLException e) {
-            System.out.println("Database cannot be created");
+            System.out.println(e.getMessage());
         }
     }
 
@@ -46,27 +46,28 @@ public class SQLiteDatabase {
     }
 
     public void addMovie(Movie m) {
-        String sql = "INSERT INTO MOVIES VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO MOVIES(MOVIENAME,LEADACTOR,LEADACTRESS,YEAROFRELEASE,DIRECTOR) "
+                + "VALUES(?,?,?,?,?)";
         try {
             PreparedStatement stmt = c.prepareStatement(sql);
-            stmt.setString(0,m.getMovieName());
-            stmt.setString(1, m.getLeadActor());
-            stmt.setString(2, m.getLeadActress());
-            stmt.setString(3, m.getYearOfRelease());
-            stmt.setString(4, m.getDirector());
+            stmt.setString(1,m.getMovieName());
+            stmt.setString(2, m.getLeadActor());
+            stmt.setString(3, m.getLeadActress());
+            stmt.setString(4, m.getYearOfRelease());
+            stmt.setString(5, m.getDirector());
             stmt.executeUpdate();
         } catch (SQLException e) {
-            
+            System.out.println(e.getMessage());
         }
     }
 
     public ArrayList<Movie> queryAllMovie() {
         ArrayList<Movie> list = new ArrayList<>();
-        String sql="SELECT * FROM MOVIES";
+        String sql="SELECT MOVIENAME,LEADACTOR,LEADACTRESS,YEAROFRELEASE,DIRECTOR FROM MOVIES";
         try {
             Statement stmt = c.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-            while(!rs.next()){
+            while(rs.next()){
                 Movie m = new Movie(rs.getString(1),
                         rs.getString(2),
                         rs.getString(3),
@@ -75,7 +76,7 @@ public class SQLiteDatabase {
                 list.add(m);
             }
         } catch (SQLException e) {
-
+            System.out.println(e.getMessage());
         }
         return list;
     }

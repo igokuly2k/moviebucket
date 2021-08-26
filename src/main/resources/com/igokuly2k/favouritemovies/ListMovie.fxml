@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.igokuly2k.favouritemovies.ListMovieController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/13" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.igokuly2k.favouritemovies.ListMovieController">
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
@@ -17,13 +17,13 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </HBox>
-      <TableView fx:id="MovieList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="500.0">
+      <TableView fx:id="moviesTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="500.0">
         <columns>
-          <TableColumn minWidth="100.0" prefWidth="100.0" text="Movie Name" />
-          <TableColumn minWidth="100.0" prefWidth="100.0" text="Lead Actor" />
-            <TableColumn minWidth="100.0" prefWidth="100.0" text="Lead Actress" />
-            <TableColumn minWidth="100.0" prefWidth="100.0" text="Year Of Release" />
-            <TableColumn minWidth="100.0" prefWidth="100.0" text="Director" />
+          <TableColumn fx:id="movieNameColumn" minWidth="100.0" prefWidth="100.0" text="Movie Name" />
+          <TableColumn fx:id="leadActorColumn" minWidth="100.0" prefWidth="100.0" text="Lead Actor" />
+            <TableColumn fx:id="leadActressColumn" minWidth="100.0" prefWidth="100.0" text="Lead Actress" />
+            <TableColumn fx:id="yearOfReleaseColumn" minWidth="100.0" prefWidth="100.0" text="Year Of Release" />
+            <TableColumn fx:id="directorColumn" minWidth="100.0" prefWidth="100.0" text="Director" />
         </columns>
       </TableView>
    </children>
