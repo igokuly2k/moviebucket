@@ -19,18 +19,24 @@ public class Movie {
     private String director;
     private String leadActor;
 
-    public Movie(String movieName, String leadActor, String leadActress, String yearOfRelease, String director) {
-        this.movieName = movieName;
-        this.leadActor = leadActor;
-        this.leadActress = leadActress;
-        this.yearOfRelease = yearOfRelease;
-        this.director = director;
+    public Movie(String mn, String la, String lac, String yor, String dir) {
+        this.movieName = mn;
+        this.leadActor = la;
+        this.leadActress = lac;
+        this.yearOfRelease = yor;
+        this.director = dir;
     }
 
-    public static boolean validateYear(String year) {
+    public boolean validateIsEmpty(){
+        if(movieName.contentEquals("")) return false;
+        if(leadActor.contentEquals("")) return false;
+        if(leadActress.contentEquals("")) return false;
+        return !director.contentEquals("");
+    }
+    public boolean validateYear() {
         int a;
         try {
-            a = Integer.parseInt(year);
+            a = Integer.parseInt(yearOfRelease);
             return a >= 1800 && a <= Calendar.getInstance().getWeekYear();
         } catch (NumberFormatException e) {
             return false;

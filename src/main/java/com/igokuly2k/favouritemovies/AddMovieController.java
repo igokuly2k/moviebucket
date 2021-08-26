@@ -33,14 +33,17 @@ public class AddMovieController implements Controller {
         app.changeScene("primary");
     }
     public void submit(MouseEvent e){
-        if(!Movie.validateYear(yearOfReleaseField.getText()))
+        String mn = movieNameField.getText().trim();
+        String la = leadActorField.getText().trim();
+        String lac = leadActressField.getText().trim();
+        String yor = yearOfReleaseField.getText().trim();
+        String dir = directorField.getText().trim();
+        Movie m = new Movie(mn,la,lac,yor,dir);
+        if(!m.validateYear())
             setErrorStatus("Invalid Year");
+        else if(!m.validateIsEmpty())
+            setErrorStatus("Enter Proper Details");
         else{
-            Movie m = new Movie(movieNameField.getText(),
-            leadActorField.getText(),
-            leadActressField.getText(),
-            yearOfReleaseField.getText(),
-            directorField.getText());
             db.addMovie(m);
             setErrorStatus("Successfully Submitted");
         }
