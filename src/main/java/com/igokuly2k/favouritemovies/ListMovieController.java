@@ -6,10 +6,19 @@
 
 package com.igokuly2k.favouritemovies;
 
+import javafx.scene.input.MouseEvent;
+
 /**
  *
  * @author igoku
  */
-public class ListMovieController {
-
+public class ListMovieController implements Controller{
+    private App app;
+    @Override
+    public void setApp(App app){
+        this.app=app;
+    }
+    public void goBack(MouseEvent e){
+        app.changeScene("primary");
+    }
 }

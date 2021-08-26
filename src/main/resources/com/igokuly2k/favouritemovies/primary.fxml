@@ -5,17 +5,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="450.0" spacing="40.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.igokuly2k.favouritemovies.PrimaryController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" spacing="40.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.igokuly2k.favouritemovies.PrimaryController">
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
    <children>
-      <Button fx:id="addButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="300.0" text="Add Favourite Movie">
+      <Button fx:id="addButton" mnemonicParsing="false" onMouseClicked="#goToAddMovie" prefHeight="50.0" prefWidth="300.0" text="Add Favourite Movie">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="showButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="300.0" text="Show Favourite Movies" textAlignment="CENTER">
+      <Button fx:id="showButton" mnemonicParsing="false" onMouseClicked="#goToListMovie" prefHeight="50.0" prefWidth="300.0" text="Show Favourite Movies" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>

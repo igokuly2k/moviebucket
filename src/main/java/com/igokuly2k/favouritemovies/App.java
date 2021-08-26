@@ -1,36 +1,47 @@
 package com.igokuly2k.favouritemovies;
 
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 /**
  * JavaFX App
  */
 public class App extends Application {
-
-    private static Scene scene;
-
+    
+    private Parent root;
+    private Scene scene;
+    private Stage primaryStage;
     @Override
-    public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 500, 500);
-        stage.setScene(scene);
-        stage.show();
+    public void start(Stage primaryStage) {
+        this.primaryStage=primaryStage;
+        loadScene("primary");
+        primaryStage.setResizable(false);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("MovieBucket");
+        primaryStage.show();
     }
-
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
+    
+    public void changeScene(String sceneStr) {
+                loadScene(sceneStr);
+                primaryStage.setScene(scene);
     }
-
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
+    public void loadScene(String fxml) {
+        try{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml+".fxml"));
+        root = loader.load();
+        Controller controller = loader.getController();
+        controller.setApp(this);
+        scene = new Scene(root);
+        }
+        catch(IOException e){
+            for(StackTraceElement str:e.getStackTrace())
+            System.out.println(str.toString());
+        }
     }
-
     public static void main(String[] args) {
         launch();
     }
