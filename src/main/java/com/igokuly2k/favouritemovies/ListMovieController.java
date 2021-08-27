@@ -10,8 +10,10 @@ import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
@@ -29,17 +31,28 @@ public class ListMovieController implements Controller{
     @FXML private TableColumn leadActressColumn;
     @FXML private TableColumn yearOfReleaseColumn;
     @FXML private TableColumn directorColumn;
+    @FXML private TextField searchField;
+    @FXML private ComboBox categoryComboBox;
     @Override
     public void setApp(App app){
         this.app=app;
         db=app.getDB();
-        loadQuery();
+        String columns[]={"MOVIENAME","LEADACTOR","LEADACTRESS","YEAROFRELEASE","DIRECTOR"};
+        categoryComboBox.setValue("MOVIENAME");
+        categoryComboBox.setItems(FXCollections.observableArrayList(columns));
+        loadQuery(db.queryAllMovie());
     }
     public void goBack(MouseEvent e){
         app.changeScene("primary");
     }
-    public void loadQuery(){
-        list=FXCollections.observableList(db.queryAllMovie());
+    public void search(MouseEvent e){
+        String searchFilter=searchField.getText();
+        String category = categoryComboBox.getValue().toString();
+        if(!searchFilter.trim().contentEquals(""))
+        loadQuery(db.queryFilter(category, searchFilter));
+    }
+    public void loadQuery(ArrayList<Movie> arrList){
+        list=FXCollections.observableList(arrList);
         movieNameColumn.setCellValueFactory(new PropertyValueFactory<>("movieName"));
         leadActorColumn.setCellValueFactory(new PropertyValueFactory<>("leadActor"));
         leadActressColumn.setCellValueFactory(new PropertyValueFactory<>("leadActress"));

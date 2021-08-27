@@ -39,10 +39,10 @@ public class AddMovieController implements Controller {
         String yor = yearOfReleaseField.getText().trim();
         String dir = directorField.getText().trim();
         Movie m = new Movie(mn,la,lac,yor,dir);
-        if(!m.validateYear())
-            setErrorStatus("Invalid Year");
-        else if(!m.validateIsEmpty())
+        if(!m.validateIsEmpty())
             setErrorStatus("Enter Proper Details");
+        else if(!m.validateYear())
+            setErrorStatus("Invalid Year");
         else{
             db.addMovie(m);
             setErrorStatus("Successfully Submitted");
